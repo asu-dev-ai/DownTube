@@ -1,86 +1,103 @@
 # DownTube
 
-A free Snaptube-style video/audio downloader with **no ads, no account, no tracking**.
-Two parts:
+[![License: MIT](https://img.shields.io/badge/License-MIT-16A34A.svg)](LICENSE)
+[![Build APK](https://github.com/asu-dev-ai/DownTube/actions/workflows/android.yml/badge.svg)](https://github.com/asu-dev-ai/DownTube/actions/workflows/android.yml)
+[![Release](https://img.shields.io/github/v/release/asu-dev-ai/DownTube?label=release&color=2563EB)](https://github.com/asu-dev-ai/DownTube/releases)
+[![Android](https://img.shields.io/badge/Android-10%2B-3DDC84?logo=android&logoColor=white)](#install)
 
-| Part | What it is |
-| --- | --- |
-| [`android/`](android) | **Android app** — paste a link, pick a quality, download to `Downloads/downtube` |
-| [`downtube.py`](downtube.py) | Optional command line version for a PC |
+A free **Snaptube-style** downloader for Android. Paste or copy any video link, pick a
+quality, download — or browse, play and save straight from the app.
 
-MIT licensed — use it, fork it, change it, share it.
+**No ads · no account · no tracking · MIT licensed** — fork it, change it, ship it.
 
-## Android app
+![UI mockup — main screen with every download state](docs/ui-mockup.svg)
 
-### Install an APK
+> Design mockup of the main screen showing all five queue states
+> (downloading, pending, complete, failed, cancelled).
 
-1. Open the [**Actions**](../../actions/workflows/android.yml) tab.
-2. Pick the newest green "build apk" run.
-3. Download **`downtube-release-apk`** (or `downtube-debug-apk`) from *Artifacts*.
-4. Unzip, copy the `.apk` to your phone, tap it and allow *Install unknown apps*.
+## Install
 
-Tagged builds (`v1.0`, `v1.1`, …) also show up under **Releases** with both APKs attached.
+1. Open [Releases](https://github.com/asu-dev-ai/DownTube/releases) — tagged builds ship
+   both APKs attached — or the latest green run on [Actions](../../actions/workflows/android.yml)
+   under *Artifacts*.
+2. Download `downtube-release-apk` (or `debug`), unzip, copy the `.apk` to your phone.
+3. Tap it and allow *Install unknown apps*.
 
-### What it does
+| | |
+|---|---|
+| **Requires** | Android 10 (API 29) or newer |
+| **Size** | ~97 MB per APK — Python, yt-dlp and ffmpeg are bundled inside |
+| **ABI** | arm64-v8a + armeabi-v7a |
 
-- Paste a link, or press **Share → downtube** from YouTube / Chrome and the link is filled in
-- Quality presets: **Best / 1080p / 720p / 480p / 360p / MP3 (audio only)**
-- Live progress with ETA, and a **Cancel** button
-- Finished files land in **`Downloads/downtube`**, so the gallery and file manager see them
-- Works with everything yt-dlp supports (YouTube, Instagram, Facebook, TikTok, Vimeo, …)
+## What is inside
 
-### Build it yourself on GitHub
+### Downloading
+- **Queue** with five states, each with its own icon, colour and wording:
+  **pending → downloading → complete / failed / cancelled**
+- Live **progress % + ETA**, per-item **Cancel**, **Retry** (resumes), **Remove**
+- **Foreground service** — downloads keep running with a notification and a
+  Cancel action when the app is in the background
+- **Playlist** support (switch next to the quality chips)
+- Files land in **`Downloads/downtube`**, visible in the gallery and file manager
+- **Sound + vibration** on queue/complete/fail, both switchable in the app
+- Friendly, actionable errors instead of yt-dlp trace text
+  (login needed, 404, rate limited, out of storage, unsupported link, …)
 
-Push to `main` (or run the workflow manually) and the APK is built on GitHub's runners —
-nothing to install locally:
+### Browse, play, download
+- **In-app browser** — open any site, play the video inline, tap *Download this page*
+- **Login** mode saves the site's cookies so private/login-walled links work
+- **Clipboard auto-detect** — copy a link in another app, open DownTube, and a popup
+  offers **Play / Download / Close**; back button or *Close* dismisses it
+- **Platform detection** — the popup labels YouTube, Instagram, Facebook, TikTok,
+  X/Reddit, SoundCloud, Vimeo, Dailymotion, Twitch, Tumblr, Bilibili, …
+- **Built-in player** (Media3/ExoPlayer): seek, play/pause, **speed 0.5x–2x**, mute
+- **Update engine** button pulls the newest yt-dlp nightly
 
-- **debug** and **release** APKs are built in the same run
-- both are uploaded as workflow artifacts
-- pushing a tag like `v1.0` publishes a GitHub release with both APKs
+### Quality presets
+Best · 1080p · 720p · 480p · 360p · **MP3** (192 kbps)
 
-The release APK is signed with the debug keystore so it installs without any secrets.
-That is fine for sideloading — it is **not** a Play Store signing setup.
+## Platforms
 
-### Apps under the hood
+Download support comes from [yt-dlp](https://github.com/yt-dlp/yt-dlp) —
+**1755 extractors**. Realistically:
 
-- [yt-dlp](https://github.com/yt-dlp/yt-dlp) + Python + ffmpeg, bundled through
-  [youtubedl-android](https://github.com/yausername/youtubedl-android) (0.18.1)
-- Kotlin, Material 3, min Android 10 (API 29), arm64 + armeabi-v7a
+| Works without login | Needs *Login* (cookies) first | Not supported |
+|---|---|---|
+| YouTube, TikTok, Reddit, Pinterest, SoundCloud, Vimeo, Dailymotion | Instagram, Facebook, X/Twitter, private/unlisted/age-gated content | Threads (no extractor), DRM content |
 
-### Known limitations
+If a download says *"This site needs a login"* — tap **Login**, sign in in the browser,
+tap **Use cookies**, retry.
 
-- Downloads run inside the app, so if Android kills the app mid-download it stops
-  (a foreground service is the next step)
-- The bundled yt-dlp ages: when YouTube changes something, the library has to be updated
-  (`youtubedl-android` version bump in `android/app/build.gradle.kts`)
+## Building
 
-## PC command line (optional)
+Everything runs on GitHub — no local toolchain needed:
 
-```bash
-python -m venv .venv
-.venv/Scripts/python.exe -m pip install -r requirements.txt
+- Push to `main`, open a PR, or run the workflow manually → **debug + release APKs**
+  are built and uploaded as artifacts
+- Push a tag (`v1.0.0`) → both APKs are attached to a **GitHub Release** automatically
 
-./downtube.cmd "URL"                                # best quality
-./downtube.cmd -q 1080 -f mp4 "URL"                 # 1080p mp4
-./downtube.cmd -q audio -f mp3 --audio-bitrate 320 "URL"
-./downtube.cmd -F "URL"                             # list available formats
+Locally (optional): `cd android && ./gradlew assembleDebug assembleRelease`.
+The release APK is signed with the debug keystore so it installs without secrets —
+fine for sideloading, not a Play Store setup.
+
+### Project layout
+
+```
+android/        Android app (Kotlin, Material 3, youtubedl-android + Media3)
+docs/           UI mockup
+downtube.py     optional PC command line version
 ```
 
-| Flag | Meaning |
-| --- | --- |
-| `-q, --quality` | `best` (default), `2160`/`1440`/`1080`/`720`/`480`/`360`/`240`, `worst`, `audio` |
-| `-f, --format` | `auto` (default), `mp4`, `webm`, `mkv`, or audio: `mp3`, `m4a`, `opus`, `wav`, `flac` |
-| `-o, --output` | folder to save into (default `./downloads`) |
-| `-F, --list-formats` | print every available format and exit |
-| `--audio-bitrate` | `64` … `320` kbps for mp3/opus (default `192`) |
-| `--playlist` | download the whole playlist |
-| `--cookies-from-browser` | `chrome`, `edge`, `firefox`, … for bot-checked pages |
+## Known limits
 
-If YouTube answers with `Sign in to confirm you're not a bot`, pass cookies:
-`./downtube.cmd --cookies-from-browser chrome "URL"`. yt-dlp goes stale every few weeks —
-update it with `.venv/Scripts/python.exe -m pip install -U yt-dlp`.
+- The bundled yt-dlp ages with YouTube's changes — use **Update engine** when a
+  site starts failing
+- Downloads survive the app going to the background, but a force-stop still kills them
+- Not yet tested on a physical device (CI builds and packages the APK)
 
 ## Legal
 
 Only download what you have the right to download. Downloading copyrighted material
 usually breaks the site's terms of service and can be illegal where you live.
+
+## [LICENSE](LICENSE) — MIT

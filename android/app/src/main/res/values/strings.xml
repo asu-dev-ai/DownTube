@@ -1,12 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">downtube</string>
-    <string name="tagline">Save video or audio from any link. Free, no ads, no account.</string>
+    <string name="app_name">DownTube</string>
+    <string name="tagline">Download video and audio from any site. No ads, no account, MIT licensed.</string>
+
     <string name="hint_url">Paste a video link</string>
     <string name="paste">Paste</string>
     <string name="download">Download</string>
-    <string name="cancel">Cancel</string>
+    <string name="playlist">Playlist</string>
+    <string name="browse">Browse</string>
+    <string name="login">Login</string>
+    <string name="update">Update engine</string>
+    <string name="go">Go</string>
+    <string name="back">Back</string>
+    <string name="close">Close</string>
     <string name="open">Open</string>
-    <string name="idle_status">Paste a link and tap Download.</string>
-    <string name="saved_header">Saved in Downloads/downtube</string>
+    <string name="play">Play</string>
+    <string name="cancel">Cancel</string>
+    <string name="retry">Retry</string>
+    <string name="remove">Remove</string>
+    <string name="mute">Mute</string>
+    <string name="unmute">Unmute</string>
+    <string name="speed">1x</string>
+    <string name="sounds">Sounds</string>
+    <string name="vibrate">Vibrate</string>
+
+    <string name="downloads_header_default">Downloads</string>
+    <string name="downloads_count">Downloads · %1$d</string>
+    <string name="downloads_pending">Downloads · %1$d · %2$d pending</string>
+    <string name="clear_done">Clear finished</string>
+    <string name="empty_state">Nothing here yet. Paste a link above, or use Browse to open a site.</string>
+
+    <string name="status_pending">Pending · waiting for its turn</string>
+    <string name="status_downloading">Downloading %1$d%%%2$s</string>
+    <string name="status_eta"> · ETA %1$d:%2$02d</string>
+    <string name="status_done">Saved to Downloads/downtube</string>
+    <string name="status_failed">Download failed</string>
+    <string name="status_cancelled">Cancelled</string>
+    <string name="status_icon">Download status</string>
+
+    <string name="need_link">Paste a link that starts with http</string>
+    <string name="clipboard_empty">Clipboard is empty</string>
+    <string name="added_to_queue">Added to the download queue</string>
+    <string name="updating_engine">Updating yt-dlp…</string>
+    <string name="update_failed">Update failed: %1$s</string>
+    <string name="download_finished">Download finished</string>
+    <string name="download_failed">Download failed</string>
+
+    <string name="link_detected_title">Link detected</string>
+    <string name="link_detected_platform">%1$s link copied\n\n%2$s</string>
+    <string name="link_detected">Link copied\n\n%1$s</string>
+    <string name="preparing_playback">Preparing playback…</string>
+
+    <string name="browser_hint">Open any site here, play a video, then tap Download this page.</string>
+    <string name="browser_login_hint">Log in to the site, then tap Use cookies - downloads will reuse that login.</string>
+    <string name="download_page">Download this page</string>
+    <string name="use_cookies">Use cookies</string>
 </resources>

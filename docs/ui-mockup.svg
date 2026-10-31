@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="880" viewBox="0 0 420 880" font-family="Roboto, 'Segoe UI', sans-serif">
+  <rect x="0" y="0" width="420" height="880" rx="26" fill="#0B1220"/>
+  <rect x="14" y="14" width="392" height="852" rx="20" fill="#0F172A" stroke="#1F2937"/>
+
+  <!-- header -->
+  <text x="34" y="64" fill="#F8FAFC" font-size="24" font-weight="700">DownTube</text>
+  <text x="34" y="86" fill="#94A3B8" font-size="12">Download video and audio from any site. No ads, no account.</text>
+
+  <!-- link card -->
+  <rect x="28" y="102" width="364" height="228" rx="18" fill="#151F32" stroke="#273449"/>
+  <rect x="44" y="120" width="332" height="50" rx="12" fill="#0F172A" stroke="#3B4E68"/>
+  <text x="60" y="150" fill="#94A3B8" font-size="13">https://youtu.be/watch?v=…</text>
+
+  <g font-size="12">
+    <rect x="44" y="184" width="76" height="30" rx="15" fill="#2563EB"/>
+    <text x="82" y="203" fill="#FFFFFF" text-anchor="middle">Best</text>
+    <rect x="128" y="184" width="80" height="30" rx="15" fill="#0F172A" stroke="#3B4E68"/>
+    <text x="168" y="203" fill="#94A3B8" text-anchor="middle">1080p</text>
+    <rect x="216" y="184" width="80" height="30" rx="15" fill="#0F172A" stroke="#3B4E68"/>
+    <text x="256" y="203" fill="#94A3B8" text-anchor="middle">720p</text>
+    <rect x="304" y="184" width="72" height="30" rx="15" fill="#0F172A" stroke="#3B4E68"/>
+    <text x="340" y="203" fill="#94A3B8" text-anchor="middle">MP3</text>
+  </g>
+
+  <g font-size="12">
+    <rect x="44" y="224" width="88" height="26" rx="13" fill="#253352"/>
+    <circle cx="58" cy="237" r="6" fill="#2563EB"/>
+    <text x="70" y="241" fill="#CBD5E1">Playlist</text>
+    <rect x="276" y="224" width="100" height="26" rx="13" fill="#253352"/>
+    <text x="326" y="241" fill="#CBD5E1" text-anchor="middle">Paste</text>
+  </g>
+
+  <rect x="44" y="262" width="332" height="52" rx="16" fill="#2563EB"/>
+  <text x="210" y="294" fill="#FFFFFF" font-size="15" font-weight="600" text-anchor="middle">Download</text>
+
+  <!-- tool row -->
+  <text x="74" y="356" fill="#60A5FA" font-size="12" text-anchor="middle">Browse</text>
+  <text x="210" y="356" fill="#60A5FA" font-size="12" text-anchor="middle">Login</text>
+  <text x="346" y="356" fill="#60A5FA" font-size="12" text-anchor="middle">Update engine</text>
+  <line x1="28" y1="372" x2="392" y2="372" stroke="#1F2937"/>
+
+  <text x="34" y="404" fill="#F8FAFC" font-size="16" font-weight="600">Downloads · 5 · 2 pending</text>
+  <text x="332" y="404" fill="#60A5FA" font-size="12" text-anchor="end">Clear finished</text>
+
+  <!-- downloading -->
+  <g>
+    <rect x="28" y="422" width="364" height="94" rx="16" fill="#151F32" stroke="#273449"/>
+    <path transform="translate(48,440) scale(0.85)" fill="#3B82F6" d="M19,9h-4V3H9v6H5l7,7 7,-7zM5,18v2h14v-2H5z"/>
+    <text x="86" y="450" fill="#E2E8F0" font-size="13">Big Buck Bunny 60fps 4K</text>
+    <text x="86" y="470" fill="#3B82F6" font-size="12">Downloading 42% · ETA 0:38</text>
+    <rect x="86" y="482" width="286" height="6" rx="3" fill="#1E293B"/>
+    <rect x="86" y="482" width="120" height="6" rx="3" fill="#3B82F6"/>
+    <text x="86" y="506" fill="#60A5FA" font-size="12">Cancel</text>
+  </g>
+
+  <!-- pending -->
+  <g>
+    <rect x="28" y="528" width="364" height="72" rx="16" fill="#151F32" stroke="#273449"/>
+    <path transform="translate(48,544) scale(0.85)" fill="#94A3B8" d="M11.99,2C6.47,2 2,6.48 2,12s4.47,10 9.99,10C17.52,22 22,17.52 22,12S17.52,2 11.99,2zM12,20c-4.42,0 -8,-3.58 -8,-8s3.58,-8 8,-8 8,3.58 8,8 -3.58,8 -8,8zM12.5,7H11v6l5.25,3.15 0.75,-1.23 -4.5,-2.67z"/>
+    <text x="86" y="552" fill="#E2E8F0" font-size="13">SoundCloud playlist</text>
+    <text x="86" y="572" fill="#94A3B8" font-size="12">Pending · waiting for its turn</text>
+    <text x="86" y="592" fill="#60A5FA" font-size="12">Cancel</text>
+  </g>
+
+  <!-- done -->
+  <g>
+    <rect x="28" y="612" width="364" height="72" rx="16" fill="#151F32" stroke="#273449"/>
+    <path transform="translate(48,628) scale(0.85)" fill="#22C55E" d="M9,16.17L4.83,12l-1.42,1.41L9,19 21,7l-1.41,-1.41z"/>
+    <text x="86" y="636" fill="#E2E8F0" font-size="13">Midnight Sun | Iceland.mp4</text>
+    <text x="86" y="656" fill="#22C55E" font-size="12">Saved to Downloads/downtube</text>
+    <text x="86" y="676" fill="#60A5FA" font-size="12">Open</text>
+    <text x="140" y="676" fill="#60A5FA" font-size="12">Remove</text>
+  </g>
+
+  <!-- failed -->
+  <g>
+    <rect x="28" y="696" width="364" height="72" rx="16" fill="#151F32" stroke="#273449"/>
+    <path transform="translate(48,712) scale(0.85)" fill="#F87171" d="M1,21h22L12,2 1,21zM13,18h-2v-2h2v2zM13,14h-2v-4h2v4z"/>
+    <text x="86" y="720" fill="#E2E8F0" font-size="13">Private Instagram post</text>
+    <text x="86" y="740" fill="#F87171" font-size="12">This site needs a login - open Login first</text>
+    <text x="86" y="760" fill="#60A5FA" font-size="12">Retry</text>
+    <text x="140" y="760" fill="#60A5FA" font-size="12">Remove</text>
+  </g>
+
+  <!-- cancelled -->
+  <g>
+    <rect x="28" y="780" width="364" height="72" rx="16" fill="#151F32" stroke="#273449"/>
+    <path transform="translate(48,796) scale(0.85)" fill="#94A3B8" d="M19,6.41L17.59,5 12,10.59 6.41,5 5,6.41 10.59,12 5,17.59 6.41,19 12,13.41 17.59,19 19,17.59 13.41,12z"/>
+    <text x="86" y="804" fill="#E2E8F0" font-size="13">4K Blender short film</text>
+    <text x="86" y="824" fill="#94A3B8" font-size="12">Cancelled</text>
+    <text x="86" y="844" fill="#60A5FA" font-size="12">Retry</text>
+    <text x="140" y="844" fill="#60A5FA" font-size="12">Remove</text>
+  </g>
+</svg>
