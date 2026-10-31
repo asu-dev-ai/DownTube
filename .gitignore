@@ -5,6 +5,11 @@ downloads/
 __pycache__/
 *.pyc
 
+# local secrets - never commit these
+github api.txt
+.env
+*.token
+
 # android
 android/local.properties
 android/.gradle/
