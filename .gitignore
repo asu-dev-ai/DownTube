@@ -1,0 +1,13 @@
+.venv/
+downloads/
+.tmp-test/
+.tmp-lib/
+__pycache__/
+*.pyc
+
+# android
+android/local.properties
+android/.gradle/
+android/build/
+android/app/build/
+*.apk

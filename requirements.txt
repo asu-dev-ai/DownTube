@@ -1,0 +1,10 @@
+# the downloader engine (extra "default" pulls in the recommended add-ons)
+yt-dlp[default]
+
+# CA bundle: this Python build does not pick up the Windows trust store on its
+# own, and yt-dlp uses certifi automatically when it is importable
+certifi
+
+# ships a project-local ffmpeg binary, so merging and mp3 conversion work
+# without installing anything system-wide
+imageio-ffmpeg

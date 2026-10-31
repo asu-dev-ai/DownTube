@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">downtube</string>
+    <string name="tagline">Save video or audio from any link. Free, no ads, no account.</string>
+    <string name="hint_url">Paste a video link</string>
+    <string name="paste">Paste</string>
+    <string name="download">Download</string>
+    <string name="cancel">Cancel</string>
+    <string name="open">Open</string>
+    <string name="idle_status">Paste a link and tap Download.</string>
+    <string name="saved_header">Saved in Downloads/downtube</string>
+</resources>
