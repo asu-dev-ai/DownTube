@@ -48,7 +48,7 @@ class QueueAdapter(private val host: Host) : RecyclerView.Adapter<QueueAdapter.H
             binding.statusIcon.imageTintList = ColorStateList.valueOf(tone)
             binding.badge.backgroundTintList = ColorStateList.valueOf(ColorUtils.setAlphaComponent(tone, 46))
             binding.statusText.setTextColor(tone)
-            binding.statusText.isTextSelectable = item.status == DownloadStatus.FAILED
+            binding.statusText.setTextIsSelectable(item.status == DownloadStatus.FAILED)
 
             binding.progressBar.visibility = if (running) View.VISIBLE else View.GONE
             binding.progressBar.isIndeterminate = running && item.progress <= 0
