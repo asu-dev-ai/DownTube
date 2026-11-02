@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.ColorUtils
 import androidx.recyclerview.widget.RecyclerView
 import com.downtube.app.databinding.ItemDownloadBinding
 
@@ -42,8 +43,12 @@ class QueueAdapter(private val host: Host) : RecyclerView.Adapter<QueueAdapter.H
             binding.title.text = item.title
             binding.statusText.text = statusLabel(item)
             binding.statusIcon.setImageResource(iconFor(item.status))
-            binding.statusIcon.imageTintList =
-                ColorStateList.valueOf(ContextCompat.getColor(context, tintFor(item.status)))
+
+            val tone = ContextCompat.getColor(context, tintFor(item.status))
+            binding.statusIcon.imageTintList = ColorStateList.valueOf(tone)
+            binding.badge.backgroundTintList = ColorStateList.valueOf(ColorUtils.setAlphaComponent(tone, 46))
+            binding.statusText.setTextColor(tone)
+            binding.statusText.isTextSelectable = item.status == DownloadStatus.FAILED
 
             binding.progressBar.visibility = if (running) View.VISIBLE else View.GONE
             binding.progressBar.isIndeterminate = running && item.progress <= 0

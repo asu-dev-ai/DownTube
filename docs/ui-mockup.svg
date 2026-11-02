@@ -1,94 +1,127 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="420" height="880" viewBox="0 0 420 880" font-family="Roboto, 'Segoe UI', sans-serif">
-  <rect x="0" y="0" width="420" height="880" rx="26" fill="#0B1220"/>
-  <rect x="14" y="14" width="392" height="852" rx="20" fill="#0F172A" stroke="#1F2937"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="960" viewBox="0 0 420 960" font-family="Inter, Segoe UI, Roboto, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#111C33"/>
+    </linearGradient>
+    <style>
+      .card { fill: #17233B; stroke: #24344F; stroke-width: 1.5; }
+      .label { fill: #7C9BF5; font-size: 10.5px; letter-spacing: 1.4px; font-weight: 700; }
+      .title { fill: #F8FAFC; font-size: 13.5px; font-weight: 700; }
+      .body { fill: #A9B7CF; font-size: 11px; }
+      .small { fill: #7C8CA8; font-size: 10px; }
+      .chip { fill: #1E2C46; stroke: #2C3E5C; stroke-width: 1.2; }
+      .chipOn { fill: #2B4CA8; stroke: #4C7CF0; stroke-width: 1.4; }
+    </style>
+  </defs>
+
+  <rect width="420" height="960" rx="28" fill="url(#bg)"/>
 
   <!-- header -->
-  <text x="34" y="64" fill="#F8FAFC" font-size="24" font-weight="700">DownTube</text>
-  <text x="34" y="86" fill="#94A3B8" font-size="12">Download video and audio from any site. No ads, no account.</text>
+  <rect x="22" y="24" width="46" height="46" rx="23" fill="#4C7CF0"/>
+  <path d="M45 37 v13 l-4.5 -4.5 M45 50 l4.5 -4.5 M38 55 h14" stroke="#0F172A" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="80" y="44" fill="#F8FAFC" font-size="19" font-weight="800">DownTube</text>
+  <text x="80" y="60" class="body">Download or play from any site · no ads</text>
 
-  <!-- link card -->
-  <rect x="28" y="102" width="364" height="228" rx="18" fill="#151F32" stroke="#273449"/>
-  <rect x="44" y="120" width="332" height="50" rx="12" fill="#0F172A" stroke="#3B4E68"/>
-  <text x="60" y="150" fill="#94A3B8" font-size="13">https://youtu.be/watch?v=…</text>
+  <!-- section: paste a link -->
+  <text x="24" y="104" class="label">PASTE A LINK</text>
+  <rect x="18" y="114" width="384" height="212" rx="20" class="card"/>
 
-  <g font-size="12">
-    <rect x="44" y="184" width="76" height="30" rx="15" fill="#2563EB"/>
-    <text x="82" y="203" fill="#FFFFFF" text-anchor="middle">Best</text>
-    <rect x="128" y="184" width="80" height="30" rx="15" fill="#0F172A" stroke="#3B4E68"/>
-    <text x="168" y="203" fill="#94A3B8" text-anchor="middle">1080p</text>
-    <rect x="216" y="184" width="80" height="30" rx="15" fill="#0F172A" stroke="#3B4E68"/>
-    <text x="256" y="203" fill="#94A3B8" text-anchor="middle">720p</text>
-    <rect x="304" y="184" width="72" height="30" rx="15" fill="#0F172A" stroke="#3B4E68"/>
-    <text x="340" y="203" fill="#94A3B8" text-anchor="middle">MP3</text>
-  </g>
+  <rect x="32" y="128" width="356" height="46" rx="12" fill="#0E1829" stroke="#2C3E5C" stroke-width="1.4"/>
+  <text x="46" y="156" class="body">Paste a video link</text>
 
-  <g font-size="12">
-    <rect x="44" y="224" width="88" height="26" rx="13" fill="#253352"/>
-    <circle cx="58" cy="237" r="6" fill="#2563EB"/>
-    <text x="70" y="241" fill="#CBD5E1">Playlist</text>
-    <rect x="276" y="224" width="100" height="26" rx="13" fill="#253352"/>
-    <text x="326" y="241" fill="#CBD5E1" text-anchor="middle">Paste</text>
-  </g>
-
-  <rect x="44" y="262" width="332" height="52" rx="16" fill="#2563EB"/>
-  <text x="210" y="294" fill="#FFFFFF" font-size="15" font-weight="600" text-anchor="middle">Download</text>
-
-  <!-- tool row -->
-  <text x="74" y="356" fill="#60A5FA" font-size="12" text-anchor="middle">Browse</text>
-  <text x="210" y="356" fill="#60A5FA" font-size="12" text-anchor="middle">Login</text>
-  <text x="346" y="356" fill="#60A5FA" font-size="12" text-anchor="middle">Update engine</text>
-  <line x1="28" y1="372" x2="392" y2="372" stroke="#1F2937"/>
-
-  <text x="34" y="404" fill="#F8FAFC" font-size="16" font-weight="600">Downloads · 5 · 2 pending</text>
-  <text x="332" y="404" fill="#60A5FA" font-size="12" text-anchor="end">Clear finished</text>
-
-  <!-- downloading -->
+  <!-- quality chips -->
   <g>
-    <rect x="28" y="422" width="364" height="94" rx="16" fill="#151F32" stroke="#273449"/>
-    <path transform="translate(48,440) scale(0.85)" fill="#3B82F6" d="M19,9h-4V3H9v6H5l7,7 7,-7zM5,18v2h14v-2H5z"/>
-    <text x="86" y="450" fill="#E2E8F0" font-size="13">Big Buck Bunny 60fps 4K</text>
-    <text x="86" y="470" fill="#3B82F6" font-size="12">Downloading 42% · ETA 0:38</text>
-    <rect x="86" y="482" width="286" height="6" rx="3" fill="#1E293B"/>
-    <rect x="86" y="482" width="120" height="6" rx="3" fill="#3B82F6"/>
-    <text x="86" y="506" fill="#60A5FA" font-size="12">Cancel</text>
+    <rect x="32" y="186" width="58" height="30" rx="15" class="chipOn"/>
+    <text x="46" y="205" fill="#E8EEFB" font-size="11" font-weight="600">Best</text>
+    <rect x="96" y="186" width="64" height="30" rx="15" class="chip"/>
+    <text x="106" y="205" class="body">1080p</text>
+    <rect x="166" y="186" width="58" height="30" rx="15" class="chip"/>
+    <text x="176" y="205" class="body">720p</text>
+    <rect x="230" y="186" width="58" height="30" rx="15" class="chip"/>
+    <text x="240" y="205" class="body">480p</text>
+    <rect x="294" y="186" width="58" height="30" rx="15" class="chip"/>
+    <text x="304" y="205" class="body">360p</text>
+    <rect x="358" y="186" width="30" height="30" rx="15" class="chip"/>
+    <text x="366" y="205" class="small">MP3</text>
   </g>
 
-  <!-- pending -->
+  <!-- playlist + paste -->
+  <rect x="32" y="228" width="30" height="17" rx="8.5" fill="#4C7CF0"/>
+  <circle cx="53" cy="236.5" r="6.5" fill="#F8FAFC"/>
+  <text x="70" y="241" class="body">Playlist</text>
+  <rect x="322" y="226" width="66" height="30" rx="10" fill="#23304A"/>
+  <text x="338" y="246" fill="#C9D6EC" font-size="11">Paste</text>
+
+  <!-- download button -->
+  <rect x="32" y="268" width="356" height="44" rx="14" fill="#4C7CF0"/>
+  <path d="M52 282 v8 h8 M56 290 v-8 M52 284 l4 4 4 -4" stroke="#0F172A" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  <text x="188" y="296" fill="#0B1424" font-size="14" font-weight="800">Download</text>
+
+  <!-- section: tools -->
+  <text x="24" y="360" class="label">TOOLS</text>
   <g>
-    <rect x="28" y="528" width="364" height="72" rx="16" fill="#151F32" stroke="#273449"/>
-    <path transform="translate(48,544) scale(0.85)" fill="#94A3B8" d="M11.99,2C6.47,2 2,6.48 2,12s4.47,10 9.99,10C17.52,22 22,17.52 22,12S17.52,2 11.99,2zM12,20c-4.42,0 -8,-3.58 -8,-8s3.58,-8 8,-8 8,3.58 8,8 -3.58,8 -8,8zM12.5,7H11v6l5.25,3.15 0.75,-1.23 -4.5,-2.67z"/>
-    <text x="86" y="552" fill="#E2E8F0" font-size="13">SoundCloud playlist</text>
-    <text x="86" y="572" fill="#94A3B8" font-size="12">Pending · waiting for its turn</text>
-    <text x="86" y="592" fill="#60A5FA" font-size="12">Cancel</text>
+    <rect x="18" y="370" width="120" height="72" rx="18" class="card"/>
+    <circle cx="78" cy="396" r="9" fill="none" stroke="#8FB0FF" stroke-width="1.8"/>
+    <path d="M69 396 h18 M78 387 c6 5 6 13 0 18 c-6 -5 -6 -13 0 -18" stroke="#8FB0FF" stroke-width="1.4" fill="none"/>
+    <text x="56" y="428" fill="#D7E2F5" font-size="11.5">Browse</text>
+
+    <rect x="150" y="370" width="120" height="72" rx="18" class="card"/>
+    <circle cx="210" cy="392" r="6" fill="#8FB0FF"/>
+    <path d="M199 406 c0 -6 22 -6 22 0 z" fill="#8FB0FF"/>
+    <text x="190" y="428" fill="#D7E2F5" font-size="11.5">Login</text>
+
+    <rect x="282" y="370" width="120" height="72" rx="18" class="card"/>
+    <path d="M294 402 a9 9 0 1 0 3 -7 l-6 -1 1 6" stroke="#8FB0FF" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    <text x="322" y="428" fill="#D7E2F5" font-size="11.5">Engine</text>
   </g>
 
-  <!-- done -->
-  <g>
-    <rect x="28" y="612" width="364" height="72" rx="16" fill="#151F32" stroke="#273449"/>
-    <path transform="translate(48,628) scale(0.85)" fill="#22C55E" d="M9,16.17L4.83,12l-1.42,1.41L9,19 21,7l-1.41,-1.41z"/>
-    <text x="86" y="636" fill="#E2E8F0" font-size="13">Midnight Sun | Iceland.mp4</text>
-    <text x="86" y="656" fill="#22C55E" font-size="12">Saved to Downloads/downtube</text>
-    <text x="86" y="676" fill="#60A5FA" font-size="12">Open</text>
-    <text x="140" y="676" fill="#60A5FA" font-size="12">Remove</text>
-  </g>
+  <!-- section: feedback -->
+  <text x="24" y="474" class="label">FEEDBACK</text>
+  <rect x="18" y="484" width="384" height="56" rx="18" class="card"/>
+  <rect x="36" y="502" width="28" height="16" rx="8" fill="#4C7CF0"/>
+  <circle cx="56" cy="510" r="6" fill="#F8FAFC"/>
+  <text x="74" y="515" class="body">Sounds</text>
+  <rect x="270" y="502" width="28" height="16" rx="8" fill="#2C3E5C"/>
+  <circle cx="282" cy="510" r="6" fill="#94A3B8"/>
+  <text x="308" y="515" class="body">Vibrate</text>
 
-  <!-- failed -->
-  <g>
-    <rect x="28" y="696" width="364" height="72" rx="16" fill="#151F32" stroke="#273449"/>
-    <path transform="translate(48,712) scale(0.85)" fill="#F87171" d="M1,21h22L12,2 1,21zM13,18h-2v-2h2v2zM13,14h-2v-4h2v4z"/>
-    <text x="86" y="720" fill="#E2E8F0" font-size="13">Private Instagram post</text>
-    <text x="86" y="740" fill="#F87171" font-size="12">This site needs a login - open Login first</text>
-    <text x="86" y="760" fill="#60A5FA" font-size="12">Retry</text>
-    <text x="140" y="760" fill="#60A5FA" font-size="12">Remove</text>
-  </g>
+  <!-- section: downloads -->
+  <text x="24" y="580" fill="#F8FAFC" font-size="16" font-weight="800">Downloads · 4</text>
 
-  <!-- cancelled -->
-  <g>
-    <rect x="28" y="780" width="364" height="72" rx="16" fill="#151F32" stroke="#273449"/>
-    <path transform="translate(48,796) scale(0.85)" fill="#94A3B8" d="M19,6.41L17.59,5 12,10.59 6.41,5 5,6.41 10.59,12 5,17.59 6.41,19 12,13.41 17.59,19 19,17.59 13.41,12z"/>
-    <text x="86" y="804" fill="#E2E8F0" font-size="13">4K Blender short film</text>
-    <text x="86" y="824" fill="#94A3B8" font-size="12">Cancelled</text>
-    <text x="86" y="844" fill="#60A5FA" font-size="12">Retry</text>
-    <text x="140" y="844" fill="#60A5FA" font-size="12">Remove</text>
-  </g>
+  <!-- row 1: running -->
+  <rect x="18" y="592" width="384" height="86" rx="18" class="card"/>
+  <circle cx="56" cy="622" r="19" fill="#2563EB" opacity="0.18"/>
+  <path d="M56 612 v12 M50 619 l6 6 6 -6 M48 632 h16" stroke="#3B82F6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="88" y="614" class="title">Lofi beats to study to</text>
+  <text x="88" y="631" fill="#3B82F6" font-size="10.5">Downloading 62% · ETA 0:41</text>
+  <rect x="88" y="640" width="288" height="6" rx="3" fill="#24344F"/>
+  <rect x="88" y="640" width="178" height="6" rx="3" fill="#3B82F6"/>
+  <text x="88" y="666" fill="#8FB0FF" font-size="10.5" font-weight="700">CANCEL</text>
+  <text x="342" y="666" fill="#8FB0FF" font-size="10.5" font-weight="700">REMOVE</text>
+
+  <!-- row 2: pending -->
+  <rect x="18" y="688" width="384" height="70" rx="18" class="card"/>
+  <circle cx="56" cy="716" r="19" fill="#64748B" opacity="0.18"/>
+  <circle cx="56" cy="716" r="7" fill="none" stroke="#94A3B8" stroke-width="2"/>
+  <path d="M56 712 v5 l3 2" stroke="#94A3B8" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+  <text x="88" y="710" class="title">Reel · @travel.diaries</text>
+  <text x="88" y="727" class="small">Pending · waiting for its turn</text>
+  <text x="72" y="738" class="small"> </text>
+
+  <!-- row 3: complete -->
+  <rect x="18" y="768" width="384" height="70" rx="18" class="card"/>
+  <circle cx="56" cy="796" r="19" fill="#16A34A" opacity="0.18"/>
+  <path d="M48 796 l6 6 12 -13" stroke="#22C55E" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="88" y="790" class="title">Cat compilation</text>
+  <text x="88" y="807" fill="#22C55E" font-size="10.5">Saved to Downloads/downtube</text>
+
+  <!-- row 4: failed -->
+  <rect x="18" y="848" width="384" height="86" rx="18" class="card"/>
+  <circle cx="56" cy="878" r="19" fill="#DC2626" opacity="0.18"/>
+  <path d="M56 869 v10 M56 885 v1.5" stroke="#EF4444" stroke-width="2.3" stroke-linecap="round"/>
+  <text x="88" y="870" class="title">Private video</text>
+  <text x="88" y="887" fill="#EF4444" font-size="10.5">This is private content - log in to the account that owns it</text>
+  <text x="88" y="906" class="small">(raw: ERROR: Private video. Sign in if you have access)</text>
+  <text x="88" y="922" fill="#8FB0FF" font-size="10.5" font-weight="700">RETRY</text>
 </svg>

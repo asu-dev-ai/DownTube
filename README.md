@@ -12,8 +12,8 @@ quality, download — or browse, play and save straight from the app.
 
 ![UI mockup — main screen with every download state](docs/ui-mockup.svg)
 
-> Design mockup of the main screen showing all five queue states
-> (downloading, pending, complete, failed, cancelled).
+> Design mockup of the main screen: sectioned layout, three tool tiles and the
+> download list with its status badges — downloading, pending, complete and failed.
 
 ## Install
 
@@ -41,7 +41,12 @@ quality, download — or browse, play and save straight from the app.
 - Files land in **`Downloads/downtube`**, visible in the gallery and file manager
 - **Sound + vibration** on queue/complete/fail, both switchable in the app
 - Friendly, actionable errors instead of yt-dlp trace text
-  (login needed, 404, rate limited, out of storage, unsupported link, …)
+  (login needed, 404, rate limited, out of storage, unsupported link, …) — with the
+  raw engine line shown underneath so a failure can actually be diagnosed
+- **Engine self-refresh** — the yt-dlp bundled in the APK is refreshed from the
+  nightly channel before the first download of a session (at most once every 3 days).
+  This is what keeps YouTube extraction working after the site changes; the
+  **Engine** tile forces a refresh at any time
 
 ### Browse, play, download
 - **In-app browser** — open any site, play the video inline, tap *Download this page*
@@ -51,7 +56,7 @@ quality, download — or browse, play and save straight from the app.
 - **Platform detection** — the popup labels YouTube, Instagram, Facebook, TikTok,
   X/Reddit, SoundCloud, Vimeo, Dailymotion, Twitch, Tumblr, Bilibili, …
 - **Built-in player** (Media3/ExoPlayer): seek, play/pause, **speed 0.5x–2x**, mute
-- **Update engine** button pulls the newest yt-dlp nightly
+- **Engine** tile pulls the newest yt-dlp nightly on demand
 
 ### Quality presets
 Best · 1080p · 720p · 480p · 360p · **MP3** (192 kbps)
@@ -90,8 +95,9 @@ downtube.py     optional PC command line version
 
 ## Known limits
 
-- The bundled yt-dlp ages with YouTube's changes — use **Update engine** when a
-  site starts failing
+- yt-dlp ages fast against YouTube's changes. The app refreshes it automatically every
+  3 days and before the first download of a session, but a brand-new site break can
+  still land before a fixed yt-dlp build exists — tap **Engine** to force the pull
 - Downloads survive the app going to the background, but a force-stop still kills them
 - Not yet tested on a physical device (CI builds and packages the APK)
 

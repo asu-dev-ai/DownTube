@@ -8,6 +8,7 @@ object Prefs {
     private const val NAME = "settings"
     private const val KEY_SOUNDS = "sounds"
     private const val KEY_VIBRATE = "vibrate"
+    private const val KEY_ENGINE_UPDATE = "engine_updated_at"
 
     private fun prefs(context: Context): SharedPreferences =
         context.applicationContext.getSharedPreferences(NAME, Context.MODE_PRIVATE)
@@ -24,5 +25,12 @@ object Prefs {
 
     fun setVibrateEnabled(context: Context, enabled: Boolean) {
         prefs(context).edit().putBoolean(KEY_VIBRATE, enabled).apply()
+    }
+
+    fun lastEngineUpdate(context: Context): Long =
+        prefs(context).getLong(KEY_ENGINE_UPDATE, 0L)
+
+    fun markEngineUpdated(context: Context) {
+        prefs(context).edit().putLong(KEY_ENGINE_UPDATE, System.currentTimeMillis()).apply()
     }
 }

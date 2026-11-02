@@ -2,6 +2,11 @@
 <resources>
     <string name="app_name">DownTube</string>
     <string name="tagline">Download video and audio from any site. No ads, no account, MIT licensed.</string>
+    <string name="tagline_short">Download or play from any site · no ads</string>
+
+    <string name="section_link">PASTE A LINK</string>
+    <string name="section_tools">TOOLS</string>
+    <string name="section_settings">FEEDBACK</string>
 
     <string name="hint_url">Paste a video link</string>
     <string name="paste">Paste</string>
@@ -10,6 +15,7 @@
     <string name="browse">Browse</string>
     <string name="login">Login</string>
     <string name="update">Update engine</string>
+    <string name="update_short">Engine</string>
     <string name="go">Go</string>
     <string name="back">Back</string>
     <string name="close">Close</string>
@@ -28,7 +34,7 @@
     <string name="downloads_count">Downloads · %1$d</string>
     <string name="downloads_pending">Downloads · %1$d · %2$d pending</string>
     <string name="clear_done">Clear finished</string>
-    <string name="empty_state">Nothing here yet. Paste a link above, or use Browse to open a site.</string>
+    <string name="empty_state">Nothing here yet.\n\nPaste a link above, tap Browse to open a site, or copy a link from any app — DownTube will offer it the next time you open it.</string>
 
     <string name="status_pending">Pending · waiting for its turn</string>
     <string name="status_downloading">Downloading %1$d%%%2$s</string>

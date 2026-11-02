@@ -32,6 +32,7 @@ class DownloadService : Service() {
 
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
     private var worker: Job? = null
+    private var engineChecked = false
 
     override fun onBind(intent: Intent?): IBinder? = null
 
@@ -70,7 +71,7 @@ class DownloadService : Service() {
     private fun runItem(item: DownloadItem) {
         val workDir = File(cacheDir, "work/${item.id}").apply { mkdirs() }
         try {
-            Engine.init(applicationContext)
+            refreshEngine(item)
             val before = workDir.listFiles().orEmpty().map { it.name }.toSet()
 
             Engine.run(applicationContext, item, workDir) { progress, eta ->
@@ -114,7 +115,7 @@ class DownloadService : Service() {
         } catch (e: InterruptedException) {
             markCancelled(item.id)
         } catch (t: Throwable) {
-            val message = FriendlyError.from(t)
+            val message = describeFailure(t)
             DownloadStore.update(item.id) {
                 it.status = DownloadStatus.FAILED
                 it.progress = 0
@@ -123,6 +124,37 @@ class DownloadService : Service() {
             Feedback.error(applicationContext)
             notifyResult(item, getString(R.string.download_failed), null)
         }
+    }
+
+    /**
+     * The yt-dlp binary bundled in the APK ages out; refresh it before the first
+     * download of a session so extraction keeps working.
+     */
+    private fun refreshEngine(item: DownloadItem) {
+        if (engineChecked) return
+        engineChecked = true
+        val stale = System.currentTimeMillis() - Prefs.lastEngineUpdate(this) > 3L * 24 * 60 * 60 * 1000
+        if (!stale) {
+            Engine.init(applicationContext)
+            return
+        }
+
+        DownloadStore.update(item.id) { it.message = getString(R.string.updating_engine) }
+        updateNotification(item)
+        runCatching { Engine.ensureFresh(applicationContext) }
+        DownloadStore.update(item.id) { if (it.progress <= 0) it.message = null }
+    }
+
+    /** Friendly headline for the list, plus the raw engine line for diagnosis. */
+    private fun describeFailure(t: Throwable): String {
+        val friendly = FriendlyError.from(t)
+        val raw = (t.message ?: "")
+            .replace("\n", " ")
+            .replace("ERROR: ", "")
+            .trim()
+        if (raw.isEmpty() || raw.equals(friendly, ignoreCase = true)) return friendly
+        if (friendly.contains(raw.take(40), ignoreCase = true)) return friendly
+        return "$friendly\n${raw.take(180)}"
     }
 
     private fun markCancelled(id: String) {

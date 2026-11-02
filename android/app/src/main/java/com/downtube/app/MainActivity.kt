@@ -276,7 +276,7 @@ class MainActivity : AppCompatActivity(), QueueAdapter.Host {
         lifecycleScope.launch {
             val result = withContext(Dispatchers.IO) {
                 runCatching {
-                    Engine.init(applicationContext)
+                    Engine.ensureFresh(applicationContext)
                     val request = YoutubeDLRequest(url)
                     request.addOption("-f", "best")
                     request.addOption("--no-playlist")

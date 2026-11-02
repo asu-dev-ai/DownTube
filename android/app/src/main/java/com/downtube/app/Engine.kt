@@ -69,10 +69,37 @@ object Engine {
         runCatching { YoutubeDL.destroyProcessById(itemId) }
     }
 
+    /** The bundled yt-dlp is years old in shipping libraries; refresh it. */
+    private const val UPDATE_INTERVAL_MS = 3L * 24 * 60 * 60 * 1000
+
+    /**
+     * The copy of yt-dlp that ships inside the APK goes stale quickly - sites
+     * change their signatures and old builds stop extracting. Refresh it when it
+     * is older than [UPDATE_INTERVAL_MS] (or when [force] is set).
+     *
+     * @return a message worth showing, or null when nothing happened.
+     */
+    @Synchronized
+    fun ensureFresh(context: Context, force: Boolean = false): String? {
+        init(context)
+        val app = context.applicationContext
+        val last = Prefs.lastEngineUpdate(app)
+        if (!force && System.currentTimeMillis() - last < UPDATE_INTERVAL_MS) return null
+
+        val status = YoutubeDL.updateYoutubeDL(app, YoutubeDL.UpdateChannel.NIGHTLY)
+        Prefs.markEngineUpdated(app)
+        return when (status) {
+            YoutubeDL.UpdateStatus.DONE -> "Engine updated to the latest yt-dlp"
+            YoutubeDL.UpdateStatus.ALREADY_UP_TO_DATE -> null
+            null -> null
+        }
+    }
+
     /** Pulls the newest nightly yt-dlp build; keeps the app working over time. */
     fun updateYtDlp(context: Context): String {
         init(context)
         val status = YoutubeDL.updateYoutubeDL(context.applicationContext, YoutubeDL.UpdateChannel.NIGHTLY)
+        Prefs.markEngineUpdated(context)
         return when (status) {
             YoutubeDL.UpdateStatus.DONE -> "yt-dlp updated"
             YoutubeDL.UpdateStatus.ALREADY_UP_TO_DATE -> "yt-dlp is already up to date"

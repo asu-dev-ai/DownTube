@@ -23,7 +23,12 @@ object FriendlyError {
                 raw.contains("This content is private", true) ->
                 "This is private content - log in to the account that owns it"
 
-            raw.contains("Unsupported URL", true) ->
+            raw.contains("unsupported version of Python", true) ||
+                raw.contains("requires Python", true) ->
+                "The download engine is out of date - tap Engine to refresh it"
+
+            raw.contains("Unsupported URL", true) ||
+                raw.contains("is not a valid URL", true) ->
                 "This link is not supported"
 
             raw.contains("HTTP Error 404", true) || raw.contains("Video not found", true) ->

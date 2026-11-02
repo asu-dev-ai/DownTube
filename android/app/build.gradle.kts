@@ -11,8 +11,8 @@ android {
         applicationId = "com.downtube.app"
         minSdk = 29
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 2
+        versionName = "1.1"
 
         // arm64 covers current phones, armeabi-v7a keeps older ones working.
         // Dropping x86 keeps the APK roughly half the size.
