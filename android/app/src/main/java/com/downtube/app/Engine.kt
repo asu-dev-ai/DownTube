@@ -86,7 +86,12 @@ object Engine {
         val last = Prefs.lastEngineUpdate(app)
         if (!force && System.currentTimeMillis() - last < UPDATE_INTERVAL_MS) return null
 
-        val status = YoutubeDL.updateYoutubeDL(app, YoutubeDL.UpdateChannel.NIGHTLY)
+        // A failed refresh must never block a download: the bundled build still
+        // works for the sites it knows about.
+        val status = runCatching {
+            YoutubeDL.updateYoutubeDL(app, YoutubeDL.UpdateChannel.NIGHTLY)
+        }.getOrNull() ?: return null
+
         Prefs.markEngineUpdated(app)
         return when (status) {
             YoutubeDL.UpdateStatus.DONE -> "Engine updated to the latest yt-dlp"
